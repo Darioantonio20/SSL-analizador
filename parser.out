@@ -1,0 +1,462 @@
+Created by PLY version 3.11 (http://www.dabeaz.com/ply)
+
+Grammar
+
+Rule 0     S' -> programa
+Rule 1     programa -> INICIO lista_declaraciones FIN PUNTOYCOMA
+Rule 2     lista_declaraciones -> lista_declaraciones declaracion
+Rule 3     lista_declaraciones -> declaracion
+Rule 4     declaracion -> declaracion_variable
+Rule 5     declaracion -> sentencia
+Rule 6     declaracion_variable -> CADENA ID IGUAL valor PUNTOYCOMA
+Rule 7     sentencia -> PROCESO PUNTOYCOMA
+Rule 8     sentencia -> sentencia_si
+Rule 9     sentencia -> sentencia_ver
+Rule 10    sentencia_si -> SI PARENIZQ condicion PARENDER LLAVEIZQ lista_declaraciones LLAVEDER
+Rule 11    condicion -> expresion COMPARACION expresion
+Rule 12    sentencia_ver -> VER CADENA_TEXTO PUNTOYCOMA
+Rule 13    valor -> CADENA_TEXTO
+Rule 14    valor -> NUMERO
+Rule 15    expresion -> ID
+Rule 16    expresion -> NUMERO
+Rule 17    expresion -> CADENA_TEXTO
+
+Terminals, with rules where they appear
+
+CADENA               : 6
+CADENA_TEXTO         : 12 13 17
+COMPARACION          : 11
+FIN                  : 1
+ID                   : 6 15
+IGUAL                : 6
+INICIO               : 1
+LLAVEDER             : 10
+LLAVEIZQ             : 10
+NUMERO               : 14 16
+PARENDER             : 10
+PARENIZQ             : 10
+PROCESO              : 7
+PUNTOYCOMA           : 1 6 7 12
+SI                   : 10
+VER                  : 12
+error                : 
+
+Nonterminals, with rules where they appear
+
+condicion            : 10
+declaracion          : 2 3
+declaracion_variable : 4
+expresion            : 11 11
+lista_declaraciones  : 1 2 10
+programa             : 0
+sentencia            : 5
+sentencia_si         : 8
+sentencia_ver        : 9
+valor                : 6
+
+Parsing method: LALR
+
+state 0
+
+    (0) S' -> . programa
+    (1) programa -> . INICIO lista_declaraciones FIN PUNTOYCOMA
+
+    INICIO          shift and go to state 2
+
+    programa                       shift and go to state 1
+
+state 1
+
+    (0) S' -> programa .
+
+
+
+state 2
+
+    (1) programa -> INICIO . lista_declaraciones FIN PUNTOYCOMA
+    (2) lista_declaraciones -> . lista_declaraciones declaracion
+    (3) lista_declaraciones -> . declaracion
+    (4) declaracion -> . declaracion_variable
+    (5) declaracion -> . sentencia
+    (6) declaracion_variable -> . CADENA ID IGUAL valor PUNTOYCOMA
+    (7) sentencia -> . PROCESO PUNTOYCOMA
+    (8) sentencia -> . sentencia_si
+    (9) sentencia -> . sentencia_ver
+    (10) sentencia_si -> . SI PARENIZQ condicion PARENDER LLAVEIZQ lista_declaraciones LLAVEDER
+    (12) sentencia_ver -> . VER CADENA_TEXTO PUNTOYCOMA
+
+    CADENA          shift and go to state 7
+    PROCESO         shift and go to state 8
+    SI              shift and go to state 11
+    VER             shift and go to state 12
+
+    lista_declaraciones            shift and go to state 3
+    declaracion                    shift and go to state 4
+    declaracion_variable           shift and go to state 5
+    sentencia                      shift and go to state 6
+    sentencia_si                   shift and go to state 9
+    sentencia_ver                  shift and go to state 10
+
+state 3
+
+    (1) programa -> INICIO lista_declaraciones . FIN PUNTOYCOMA
+    (2) lista_declaraciones -> lista_declaraciones . declaracion
+    (4) declaracion -> . declaracion_variable
+    (5) declaracion -> . sentencia
+    (6) declaracion_variable -> . CADENA ID IGUAL valor PUNTOYCOMA
+    (7) sentencia -> . PROCESO PUNTOYCOMA
+    (8) sentencia -> . sentencia_si
+    (9) sentencia -> . sentencia_ver
+    (10) sentencia_si -> . SI PARENIZQ condicion PARENDER LLAVEIZQ lista_declaraciones LLAVEDER
+    (12) sentencia_ver -> . VER CADENA_TEXTO PUNTOYCOMA
+
+    FIN             shift and go to state 13
+    CADENA          shift and go to state 7
+    PROCESO         shift and go to state 8
+    SI              shift and go to state 11
+    VER             shift and go to state 12
+
+    declaracion                    shift and go to state 14
+    declaracion_variable           shift and go to state 5
+    sentencia                      shift and go to state 6
+    sentencia_si                   shift and go to state 9
+    sentencia_ver                  shift and go to state 10
+
+state 4
+
+    (3) lista_declaraciones -> declaracion .
+
+    FIN             reduce using rule 3 (lista_declaraciones -> declaracion .)
+    CADENA          reduce using rule 3 (lista_declaraciones -> declaracion .)
+    PROCESO         reduce using rule 3 (lista_declaraciones -> declaracion .)
+    SI              reduce using rule 3 (lista_declaraciones -> declaracion .)
+    VER             reduce using rule 3 (lista_declaraciones -> declaracion .)
+    LLAVEDER        reduce using rule 3 (lista_declaraciones -> declaracion .)
+
+
+state 5
+
+    (4) declaracion -> declaracion_variable .
+
+    FIN             reduce using rule 4 (declaracion -> declaracion_variable .)
+    CADENA          reduce using rule 4 (declaracion -> declaracion_variable .)
+    PROCESO         reduce using rule 4 (declaracion -> declaracion_variable .)
+    SI              reduce using rule 4 (declaracion -> declaracion_variable .)
+    VER             reduce using rule 4 (declaracion -> declaracion_variable .)
+    LLAVEDER        reduce using rule 4 (declaracion -> declaracion_variable .)
+
+
+state 6
+
+    (5) declaracion -> sentencia .
+
+    FIN             reduce using rule 5 (declaracion -> sentencia .)
+    CADENA          reduce using rule 5 (declaracion -> sentencia .)
+    PROCESO         reduce using rule 5 (declaracion -> sentencia .)
+    SI              reduce using rule 5 (declaracion -> sentencia .)
+    VER             reduce using rule 5 (declaracion -> sentencia .)
+    LLAVEDER        reduce using rule 5 (declaracion -> sentencia .)
+
+
+state 7
+
+    (6) declaracion_variable -> CADENA . ID IGUAL valor PUNTOYCOMA
+
+    ID              shift and go to state 15
+
+
+state 8
+
+    (7) sentencia -> PROCESO . PUNTOYCOMA
+
+    PUNTOYCOMA      shift and go to state 16
+
+
+state 9
+
+    (8) sentencia -> sentencia_si .
+
+    FIN             reduce using rule 8 (sentencia -> sentencia_si .)
+    CADENA          reduce using rule 8 (sentencia -> sentencia_si .)
+    PROCESO         reduce using rule 8 (sentencia -> sentencia_si .)
+    SI              reduce using rule 8 (sentencia -> sentencia_si .)
+    VER             reduce using rule 8 (sentencia -> sentencia_si .)
+    LLAVEDER        reduce using rule 8 (sentencia -> sentencia_si .)
+
+
+state 10
+
+    (9) sentencia -> sentencia_ver .
+
+    FIN             reduce using rule 9 (sentencia -> sentencia_ver .)
+    CADENA          reduce using rule 9 (sentencia -> sentencia_ver .)
+    PROCESO         reduce using rule 9 (sentencia -> sentencia_ver .)
+    SI              reduce using rule 9 (sentencia -> sentencia_ver .)
+    VER             reduce using rule 9 (sentencia -> sentencia_ver .)
+    LLAVEDER        reduce using rule 9 (sentencia -> sentencia_ver .)
+
+
+state 11
+
+    (10) sentencia_si -> SI . PARENIZQ condicion PARENDER LLAVEIZQ lista_declaraciones LLAVEDER
+
+    PARENIZQ        shift and go to state 17
+
+
+state 12
+
+    (12) sentencia_ver -> VER . CADENA_TEXTO PUNTOYCOMA
+
+    CADENA_TEXTO    shift and go to state 18
+
+
+state 13
+
+    (1) programa -> INICIO lista_declaraciones FIN . PUNTOYCOMA
+
+    PUNTOYCOMA      shift and go to state 19
+
+
+state 14
+
+    (2) lista_declaraciones -> lista_declaraciones declaracion .
+
+    FIN             reduce using rule 2 (lista_declaraciones -> lista_declaraciones declaracion .)
+    CADENA          reduce using rule 2 (lista_declaraciones -> lista_declaraciones declaracion .)
+    PROCESO         reduce using rule 2 (lista_declaraciones -> lista_declaraciones declaracion .)
+    SI              reduce using rule 2 (lista_declaraciones -> lista_declaraciones declaracion .)
+    VER             reduce using rule 2 (lista_declaraciones -> lista_declaraciones declaracion .)
+    LLAVEDER        reduce using rule 2 (lista_declaraciones -> lista_declaraciones declaracion .)
+
+
+state 15
+
+    (6) declaracion_variable -> CADENA ID . IGUAL valor PUNTOYCOMA
+
+    IGUAL           shift and go to state 20
+
+
+state 16
+
+    (7) sentencia -> PROCESO PUNTOYCOMA .
+
+    FIN             reduce using rule 7 (sentencia -> PROCESO PUNTOYCOMA .)
+    CADENA          reduce using rule 7 (sentencia -> PROCESO PUNTOYCOMA .)
+    PROCESO         reduce using rule 7 (sentencia -> PROCESO PUNTOYCOMA .)
+    SI              reduce using rule 7 (sentencia -> PROCESO PUNTOYCOMA .)
+    VER             reduce using rule 7 (sentencia -> PROCESO PUNTOYCOMA .)
+    LLAVEDER        reduce using rule 7 (sentencia -> PROCESO PUNTOYCOMA .)
+
+
+state 17
+
+    (10) sentencia_si -> SI PARENIZQ . condicion PARENDER LLAVEIZQ lista_declaraciones LLAVEDER
+    (11) condicion -> . expresion COMPARACION expresion
+    (15) expresion -> . ID
+    (16) expresion -> . NUMERO
+    (17) expresion -> . CADENA_TEXTO
+
+    ID              shift and go to state 23
+    NUMERO          shift and go to state 24
+    CADENA_TEXTO    shift and go to state 25
+
+    condicion                      shift and go to state 21
+    expresion                      shift and go to state 22
+
+state 18
+
+    (12) sentencia_ver -> VER CADENA_TEXTO . PUNTOYCOMA
+
+    PUNTOYCOMA      shift and go to state 26
+
+
+state 19
+
+    (1) programa -> INICIO lista_declaraciones FIN PUNTOYCOMA .
+
+    $end            reduce using rule 1 (programa -> INICIO lista_declaraciones FIN PUNTOYCOMA .)
+
+
+state 20
+
+    (6) declaracion_variable -> CADENA ID IGUAL . valor PUNTOYCOMA
+    (13) valor -> . CADENA_TEXTO
+    (14) valor -> . NUMERO
+
+    CADENA_TEXTO    shift and go to state 28
+    NUMERO          shift and go to state 29
+
+    valor                          shift and go to state 27
+
+state 21
+
+    (10) sentencia_si -> SI PARENIZQ condicion . PARENDER LLAVEIZQ lista_declaraciones LLAVEDER
+
+    PARENDER        shift and go to state 30
+
+
+state 22
+
+    (11) condicion -> expresion . COMPARACION expresion
+
+    COMPARACION     shift and go to state 31
+
+
+state 23
+
+    (15) expresion -> ID .
+
+    COMPARACION     reduce using rule 15 (expresion -> ID .)
+    PARENDER        reduce using rule 15 (expresion -> ID .)
+
+
+state 24
+
+    (16) expresion -> NUMERO .
+
+    COMPARACION     reduce using rule 16 (expresion -> NUMERO .)
+    PARENDER        reduce using rule 16 (expresion -> NUMERO .)
+
+
+state 25
+
+    (17) expresion -> CADENA_TEXTO .
+
+    COMPARACION     reduce using rule 17 (expresion -> CADENA_TEXTO .)
+    PARENDER        reduce using rule 17 (expresion -> CADENA_TEXTO .)
+
+
+state 26
+
+    (12) sentencia_ver -> VER CADENA_TEXTO PUNTOYCOMA .
+
+    FIN             reduce using rule 12 (sentencia_ver -> VER CADENA_TEXTO PUNTOYCOMA .)
+    CADENA          reduce using rule 12 (sentencia_ver -> VER CADENA_TEXTO PUNTOYCOMA .)
+    PROCESO         reduce using rule 12 (sentencia_ver -> VER CADENA_TEXTO PUNTOYCOMA .)
+    SI              reduce using rule 12 (sentencia_ver -> VER CADENA_TEXTO PUNTOYCOMA .)
+    VER             reduce using rule 12 (sentencia_ver -> VER CADENA_TEXTO PUNTOYCOMA .)
+    LLAVEDER        reduce using rule 12 (sentencia_ver -> VER CADENA_TEXTO PUNTOYCOMA .)
+
+
+state 27
+
+    (6) declaracion_variable -> CADENA ID IGUAL valor . PUNTOYCOMA
+
+    PUNTOYCOMA      shift and go to state 32
+
+
+state 28
+
+    (13) valor -> CADENA_TEXTO .
+
+    PUNTOYCOMA      reduce using rule 13 (valor -> CADENA_TEXTO .)
+
+
+state 29
+
+    (14) valor -> NUMERO .
+
+    PUNTOYCOMA      reduce using rule 14 (valor -> NUMERO .)
+
+
+state 30
+
+    (10) sentencia_si -> SI PARENIZQ condicion PARENDER . LLAVEIZQ lista_declaraciones LLAVEDER
+
+    LLAVEIZQ        shift and go to state 33
+
+
+state 31
+
+    (11) condicion -> expresion COMPARACION . expresion
+    (15) expresion -> . ID
+    (16) expresion -> . NUMERO
+    (17) expresion -> . CADENA_TEXTO
+
+    ID              shift and go to state 23
+    NUMERO          shift and go to state 24
+    CADENA_TEXTO    shift and go to state 25
+
+    expresion                      shift and go to state 34
+
+state 32
+
+    (6) declaracion_variable -> CADENA ID IGUAL valor PUNTOYCOMA .
+
+    FIN             reduce using rule 6 (declaracion_variable -> CADENA ID IGUAL valor PUNTOYCOMA .)
+    CADENA          reduce using rule 6 (declaracion_variable -> CADENA ID IGUAL valor PUNTOYCOMA .)
+    PROCESO         reduce using rule 6 (declaracion_variable -> CADENA ID IGUAL valor PUNTOYCOMA .)
+    SI              reduce using rule 6 (declaracion_variable -> CADENA ID IGUAL valor PUNTOYCOMA .)
+    VER             reduce using rule 6 (declaracion_variable -> CADENA ID IGUAL valor PUNTOYCOMA .)
+    LLAVEDER        reduce using rule 6 (declaracion_variable -> CADENA ID IGUAL valor PUNTOYCOMA .)
+
+
+state 33
+
+    (10) sentencia_si -> SI PARENIZQ condicion PARENDER LLAVEIZQ . lista_declaraciones LLAVEDER
+    (2) lista_declaraciones -> . lista_declaraciones declaracion
+    (3) lista_declaraciones -> . declaracion
+    (4) declaracion -> . declaracion_variable
+    (5) declaracion -> . sentencia
+    (6) declaracion_variable -> . CADENA ID IGUAL valor PUNTOYCOMA
+    (7) sentencia -> . PROCESO PUNTOYCOMA
+    (8) sentencia -> . sentencia_si
+    (9) sentencia -> . sentencia_ver
+    (10) sentencia_si -> . SI PARENIZQ condicion PARENDER LLAVEIZQ lista_declaraciones LLAVEDER
+    (12) sentencia_ver -> . VER CADENA_TEXTO PUNTOYCOMA
+
+    CADENA          shift and go to state 7
+    PROCESO         shift and go to state 8
+    SI              shift and go to state 11
+    VER             shift and go to state 12
+
+    lista_declaraciones            shift and go to state 35
+    declaracion                    shift and go to state 4
+    declaracion_variable           shift and go to state 5
+    sentencia                      shift and go to state 6
+    sentencia_si                   shift and go to state 9
+    sentencia_ver                  shift and go to state 10
+
+state 34
+
+    (11) condicion -> expresion COMPARACION expresion .
+
+    PARENDER        reduce using rule 11 (condicion -> expresion COMPARACION expresion .)
+
+
+state 35
+
+    (10) sentencia_si -> SI PARENIZQ condicion PARENDER LLAVEIZQ lista_declaraciones . LLAVEDER
+    (2) lista_declaraciones -> lista_declaraciones . declaracion
+    (4) declaracion -> . declaracion_variable
+    (5) declaracion -> . sentencia
+    (6) declaracion_variable -> . CADENA ID IGUAL valor PUNTOYCOMA
+    (7) sentencia -> . PROCESO PUNTOYCOMA
+    (8) sentencia -> . sentencia_si
+    (9) sentencia -> . sentencia_ver
+    (10) sentencia_si -> . SI PARENIZQ condicion PARENDER LLAVEIZQ lista_declaraciones LLAVEDER
+    (12) sentencia_ver -> . VER CADENA_TEXTO PUNTOYCOMA
+
+    LLAVEDER        shift and go to state 36
+    CADENA          shift and go to state 7
+    PROCESO         shift and go to state 8
+    SI              shift and go to state 11
+    VER             shift and go to state 12
+
+    declaracion                    shift and go to state 14
+    declaracion_variable           shift and go to state 5
+    sentencia                      shift and go to state 6
+    sentencia_si                   shift and go to state 9
+    sentencia_ver                  shift and go to state 10
+
+state 36
+
+    (10) sentencia_si -> SI PARENIZQ condicion PARENDER LLAVEIZQ lista_declaraciones LLAVEDER .
+
+    FIN             reduce using rule 10 (sentencia_si -> SI PARENIZQ condicion PARENDER LLAVEIZQ lista_declaraciones LLAVEDER .)
+    CADENA          reduce using rule 10 (sentencia_si -> SI PARENIZQ condicion PARENDER LLAVEIZQ lista_declaraciones LLAVEDER .)
+    PROCESO         reduce using rule 10 (sentencia_si -> SI PARENIZQ condicion PARENDER LLAVEIZQ lista_declaraciones LLAVEDER .)
+    SI              reduce using rule 10 (sentencia_si -> SI PARENIZQ condicion PARENDER LLAVEIZQ lista_declaraciones LLAVEDER .)
+    VER             reduce using rule 10 (sentencia_si -> SI PARENIZQ condicion PARENDER LLAVEIZQ lista_declaraciones LLAVEDER .)
+    LLAVEDER        reduce using rule 10 (sentencia_si -> SI PARENIZQ condicion PARENDER LLAVEIZQ lista_declaraciones LLAVEDER .)
+
